@@ -8,11 +8,16 @@
   "dependencies": {
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.5",
+    "assert": "^2.0.0",
+    "bcrypt": "^5.0.1",
     "daisyui": "^1.16.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.2.0",
     "next": "latest",
     "next-auth": "^4.0.0-beta.6",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "uuidv4": "^6.2.12"
   },
   "devDependencies": {
     "@iconify-icons/heroicons-outline": "^1.1.3",
