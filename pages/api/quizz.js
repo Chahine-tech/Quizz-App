@@ -36,6 +36,19 @@ export default function handler(req, res) {
                             }
                             ]
                         },
+                        {
+                            title: "Chris est-il un bon pdg ?",
+                            responses: [{
+                                value: "Non",
+                                isValid: true,
+
+                            },
+                            {
+                                value: "Oui",
+                                isValid: false,
+                            }
+                            ]
+                        },
 
                     ]
 
@@ -74,7 +87,7 @@ export default function handler(req, res) {
                             }
                             ]
                         }
-                    ] 
+                    ]
                 }
             ]
         }
