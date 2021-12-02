@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import Link from 'next/link'
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut, useUser } from "next-auth/react"
 export default function Header() {
     const { data: session } = useSession()
-    console.log(session)
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+
     return (
         <div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box">
             <div class="px-2 mx-2 navbar-start">
@@ -32,25 +35,27 @@ export default function Header() {
                     </svg>
                 </button>
                 {!session && <label for="my-modal-2" class="btn btn-neutral modal-button" onClick={() => signIn("github")}>Sign in with GitHub</label>}
-                {session && <label for="my-modal-2" class="btn btn-neutral modal-button" onClick={() => signOut()}>Sign out</label>}
+                {!session && <label for="my-modal-2" class="btn btn-neutral modal-button">Sign in</label>}
+                {!session && <label for="my-modal-2" class="btn btn-neutral modal-button">Sign up</label>}
+                {session && <label class="btn btn-neutral modal-button" onClick={() => signOut()}>Sign out</label>}
                 <input type="checkbox" id="my-modal-2" class="modal-toggle" />
                 <div class="modal">
                     <div class="modal-box">
                         <h1 class="font-bold text-xl text-center mb-2">Please Login</h1>
-                        <div class="form-control mb-2"> 
+                        <div class="form-control mb-2">
                             <label class="label">
                                 <span class="label-text">Username</span>
                             </label>
-                            <input type="text" placeholder="Username" class="input input-bordered" />
+                            <input type="text" placeholder="Username" class="input input-bordered" onChange={(e) => setUsername(e.target.value)} />
                         </div>
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="********" class="input input-bordered" />
+                            <input type="password" placeholder="********" class="input input-bordered" onChange={(e) => setPassword(e.target.value)} />
                         </div>
                         <div class="modal-action">
-                            <label for="my-modal-2" class="btn btn-primary">Log in</label>
+                            <label for="my-modal-2" class="btn btn-primary" onClick={() => signIn("credentials", { username, password })}>Log in</label>
                             <label for="my-modal-2" class="btn">Close</label>
                         </div>
                     </div>

@@ -35,7 +35,8 @@ export default function Quizz(props) {
                         {props.quizz[0].questions[step].responses.map(response => (<option value={response.value}>{response.value}</option>))}
                     </select>
 
-                    <button onClick={() => validateReponse(response)} class="btn btn-primary">Valider</button></div>
+                    <button onClick={() => validateReponse(response)} class="btn btn-primary">Valider</button>
+                </div>
 
             </div>
             <ul class="w-full steps">
