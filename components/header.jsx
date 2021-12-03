@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useSession, signIn, signOut, useUser } from "next-auth/react"
+import SignUp from "../pages/api/auth/signup"
 export default function Header() {
     const { data: session } = useSession()
     const [username, setUsername] = useState('')
@@ -36,7 +37,7 @@ export default function Header() {
                 </button>
                 {!session && <label for="my-modal-2" class="btn btn-neutral modal-button" onClick={() => signIn("github")}>Sign in with GitHub</label>}
                 {!session && <label for="my-modal-2" class="btn btn-neutral modal-button">Sign in</label>}
-                {!session && <label for="my-modal-2" class="btn btn-neutral modal-button">Sign up</label>}
+
                 {session && <label class="btn btn-neutral modal-button" onClick={() => signOut()}>Sign out</label>}
                 <input type="checkbox" id="my-modal-2" class="modal-toggle" />
                 <div class="modal">
@@ -44,7 +45,7 @@ export default function Header() {
                         <h1 class="font-bold text-xl text-center mb-2">Please Login</h1>
                         <div class="form-control mb-2">
                             <label class="label">
-                                <span class="label-text">Username</span>
+                                <span class="label-text">Email</span>
                             </label>
                             <input type="text" placeholder="Username" class="input input-bordered" onChange={(e) => setUsername(e.target.value)} />
                         </div>
@@ -60,6 +61,35 @@ export default function Header() {
                         </div>
                     </div>
                 </div>
+                <label for="my-modal-3" class="btn btn-neutral modal-button">Sign Up</label>
+                <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+                <div class="modal">
+                    <div class="modal-box">
+                        <h1 class="font-bold text-xl text-center mb-2">Please Sign Up</h1>
+                        <div class="form-control mb-2">
+                        <label class="label">
+                            <span class="label-text">Email</span>
+                        </label>
+                        <input type="text" placeholder="Username" class="input input-bordered"/>
+                        </div>
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Password</span>
+                            </label>
+                            <input type="password" placeholder="********" class="input input-bordered"/>
+                        </div>
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Password Confirmation</span>
+                            </label>
+                            <input type="password" placeholder="********" class="input input-bordered"/>
+                        </div>
+                        <div class="modal-action">
+                            <label for="my-modal-3" class="btn btn-primary">Go !</label>
+                            <label for="my-modal-3" class="btn">Cancel</label>
+                        </div>
+                    </div>
+                </div>
                 <div class="flex-1 lg:flex-none">
                     <div class="form-control">
                         <input type="text" placeholder="Search" class="input input-ghost" />
@@ -70,6 +100,7 @@ export default function Header() {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </button>
+
             </div>
         </div>
     )
