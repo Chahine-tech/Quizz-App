@@ -3,6 +3,7 @@ export default function handler(req, res) {
         data: {
             quizz: [
                 {
+                    id: 1,
                     name: "Quizz numéro 1",
                     questions: [
                         {
@@ -54,6 +55,7 @@ export default function handler(req, res) {
 
                 },
                 {
+                    id: 2,
                     name: "Quizz numéro 2",
                     questions: [
                         {
@@ -72,6 +74,7 @@ export default function handler(req, res) {
                     ]
                 },
                 {
+                    id: 3,
                     name: "Quizz numéro 3",
                     questions: [
                         {
